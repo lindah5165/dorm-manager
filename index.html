@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dorm Manager</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Manrope:wght@500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="app-shell">
+    <aside class="sidebar">
+      <a class="brand" href="#" aria-label="Dorm Manager home">
+        <span class="brand-mark">D</span>
+        <span><strong>dorm<span>mate</span></strong><small>HOUSEHOLD HUB</small></span>
+      </a>
+
+      <div class="household-switcher">
+        <div class="house-avatar">M</div>
+        <div class="household-label"><strong>Maple House</strong><small>4 roommates</small></div>
+        <span class="chevron">⌄</span>
+      </div>
+
+      <p class="nav-heading">WORKSPACE</p>
+      <nav class="main-nav" aria-label="Main navigation">
+        <button class="nav-link active" data-page="dashboard"><span class="nav-icon">⌂</span>Dashboard</button>
+        <button class="nav-link" data-page="calendar"><span class="nav-icon">▦</span>Calendar & Tasks</button>
+        <button class="nav-link" data-page="needs"><span class="nav-icon">🛒</span>Household Needs</button>
+        <button class="nav-link" data-page="communication"><span class="nav-icon">▤</span>Communication</button>
+        <button class="nav-link" data-page="expenses"><span class="nav-icon">＄</span>Expenses</button>
+      </nav>
+
+      <p class="nav-heading account-heading">ACCOUNT</p>
+      <nav class="main-nav" aria-label="Account navigation">
+        <button class="nav-link" data-page="profile"><span class="nav-icon">◉</span>Profile & Household</button>
+        <button class="nav-link" data-page="settings"><span class="nav-icon">⚙</span>Settings</button>
+      </nav>
+
+      <div class="sidebar-bottom">
+        <div class="help-card">
+          <div class="help-icon">✦</div>
+          <strong>Roommate tip</strong>
+          <p>A quick check-in can make shared living easier for everyone.</p>
+        </div>
+        <button class="user-mini" data-page="profile">
+          <span class="user-avatar">LH</span>
+          <span><strong>Linda Huynh</strong><small>Household member</small></span>
+          <span class="more">···</span>
+        </button>
+      </div>
+    </aside>
+
+    <main class="main-content">
+      <header class="topbar">
+        <div class="breadcrumb"><span>Maple House</span><b>/</b><strong id="breadcrumb-current">Dashboard</strong></div>
+        <div class="top-actions">
+          <span class="date-label" id="today-label"></span>
+          <button class="icon-button notification-button" aria-label="Notifications">♧<i></i></button>
+          <button class="top-profile" data-page="profile"><span class="user-avatar">LH</span><span>Linda</span><span class="chevron">⌄</span></button>
+        </div>
+      </header>
+
+      <section class="page active" id="page-dashboard">
+        <div class="welcome-row">
+          <div><p class="eyebrow">MONDAY, OCTOBER 12</p><h1>Good morning, Linda <span class="wave">✦</span></h1><p class="subheading">Here's what's happening around your household.</p></div>
+          <button class="primary-button" data-page="needs">＋ Add household item</button>
+        </div>
+
+        <div class="dashboard-grid">
+          <article class="card announcement-card span-two">
+            <div class="card-heading"><div><span class="section-icon coral">↗</span><span class="card-kicker">HOUSEHOLD ANNOUNCEMENT</span></div><span class="pill coral-pill">Pinned</span></div>
+            <h2>Maintenance visit this Wednesday</h2>
+            <p>Maintenance will be stopping by to check the kitchen sink at 2:00 PM. Please make sure the area is clear.</p>
+            <div class="card-footer"><span class="muted">Posted by Alex · Yesterday</span><button class="text-button" data-page="communication">View announcement ↗</button></div>
+          </article>
+
+          <article class="card upcoming-card">
+            <div class="card-heading"><div><span class="section-icon lavender">▦</span><span class="card-kicker">UP NEXT</span></div><button class="dots">···</button></div>
+            <div class="event-date"><strong>14</strong><span>OCT</span></div>
+            <div><h3>Roommate check-in</h3><p class="muted">Wednesday · 6:30 PM</p></div>
+            <div class="thin-divider"></div>
+            <div class="small-event"><span class="event-dot"></span><span><strong>Trash pickup</strong><small>Thursday · 8:00 AM</small></span></div>
+          </article>
+
+          <article class="card chores-card">
+            <div class="card-heading"><div><span class="section-icon mint">✓</span><span class="card-kicker">MY CHORES</span></div><span class="count-badge" id="chore-count">2</span></div>
+            <div id="dashboard-chores" class="compact-list">
+              <div class="compact-item"><span class="empty-check"></span><span><strong>Take out the trash</strong><small>Due today</small></span><span class="priority-dot"></span></div>
+              <div class="compact-item"><span class="empty-check"></span><span><strong>Wipe kitchen counters</strong><small>Due Friday</small></span></div>
+            </div>
+            <button class="text-button bottom-link" data-page="calendar">View all chores →</button>
+          </article>
+
+          <article class="card shopping-card">
+            <div class="card-heading"><div><span class="section-icon peach">🛒</span><span class="card-kicker">HOUSEHOLD SHOPPING</span></div><span class="count-badge" id="shopping-count">3</span></div>
+            <div class="shopping-preview" id="dashboard-shopping">
+              <div><span>Paper towels</span><small>Next: Linda</small></div><span class="mini-status">Needed</span>
+              <div><span>Dish soap</span><small>Next: Alex</small></div><span class="mini-status">Claimed</span>
+              <div><span>Trash bags</span><small>Next: Anyone</small></div><span class="mini-status">Needed</span>
+            </div>
+            <button class="text-button bottom-link" data-page="needs">Open shopping list →</button>
+          </article>
+
+          <article class="card progress-card">
+            <div class="card-heading"><div><span class="section-icon blue">⌂</span><span class="card-kicker">MOVING-IN CHECKLIST</span></div><span class="muted">This month</span></div>
+            <div class="progress-number"><strong>18</strong><span>/ 25 items</span></div>
+            <div class="progress-track"><span style="width:72%"></span></div>
+            <p class="muted">You're 72% settled in. Nice work!</p>
+            <button class="text-button bottom-link" data-page="needs">View checklist →</button>
+          </article>
+        </div>
+      </section>
+
+      <section class="page" id="page-calendar">
+        <div class="page-heading"><div><p class="eyebrow">STAY ON TRACK</p><h1>Calendar & Tasks</h1><p class="subheading">Keep your household's schedule and responsibilities in sync.</p></div><button class="primary-button" id="add-chore-open">＋ Add chore</button></div>
+        <div class="tabs"><button class="tab active" data-tab="calendar-tab">Calendar</button><button class="tab" data-tab="chores-tab">Chores</button></div>
+        <div class="tab-panel active" id="calendar-tab">
+          <div class="card">
+            <div class="calendar-toolbar"><div><h2>October 2026</h2><p class="muted">Your shared household calendar</p></div><div><button class="secondary-button">Today</button> <button class="secondary-button">＋ Add event</button></div></div>
+            <div class="calendar-grid" id="calendar-grid"></div>
+            <div class="calendar-legend"><span><i class="legend-purple"></i>Household event</span><span><i class="legend-orange"></i>Chore due</span></div>
+          </div>
+        </div>
+        <div class="tab-panel" id="chores-tab">
+          <div class="section-toolbar"><div><h2>Household chores</h2><p class="muted">See what's assigned and mark tasks complete.</p></div><button class="secondary-button" id="chore-wheel">⟳ Chore wheel</button></div>
+          <div class="card table-card"><div class="table-header"><span>CHORE</span><span>ASSIGNED TO</span><span>DUE DATE</span><span>STATUS</span><span></span></div><div id="chore-list"></div></div>
+        </div>
+      </section>
+
+      <section class="page" id="page-needs">
+        <div class="page-heading"><div><p class="eyebrow">SHARED HOUSEHOLD ESSENTIALS</p><h1>Household Needs</h1><p class="subheading">Keep track of what your household needs and who's picking it up.</p></div><button class="primary-button" id="add-item-open">＋ Add item</button></div>
+        <div class="tabs"><button class="tab active" data-tab="shopping-tab">Shopping list</button><button class="tab" data-tab="moving-tab">Moving in</button><button class="tab" data-tab="wishlist-tab">Wishlist</button></div>
+        <div class="tab-panel active" id="shopping-tab">
+          <div class="list-summary"><div><strong id="needs-total">3 items</strong><span> currently on your list</span></div><span class="muted">Items stay with your household</span></div>
+          <div class="card table-card"><div class="table-header shopping-table-header"><span>ITEM</span><span>LAST BOUGHT BY</span><span>NEXT BUYER</span><span>STATUS</span><span></span></div><div id="shopping-list"></div></div>
+          <div class="card tip-strip"><span class="tip-star">✦</span><span><strong>Share the load.</strong> Claim an item when you plan to buy it, then mark it purchased so your household can see who picked it up last.</span></div>
+        </div>
+        <div class="tab-panel" id="moving-tab">
+          <div class="card checklist-card"><div class="section-toolbar"><div><h2>Moving-in checklist</h2><p class="muted">A shared list to help everyone get settled.</p></div><strong id="move-progress">3 / 5 complete</strong></div><div class="progress-track"><span id="move-progress-bar" style="width:60%"></span></div><div id="moving-list" class="moving-list"></div></div>
+        </div>
+        <div class="tab-panel" id="wishlist-tab">
+          <div class="card empty-state"><div class="empty-illustration">♡</div><h2>One wishlist for the whole household</h2><p>Add a shared wishlist link so everyone can see the items your household is considering.</p><div class="inline-form"><input id="wishlist-url" type="url" placeholder="Paste your shared wishlist link"><button class="primary-button" id="save-wishlist">Save link</button></div><p class="muted" id="wishlist-message"></p></div>
+        </div>
+      </section>
+
+      <section class="page" id="page-communication">
+        <div class="page-heading"><div><p class="eyebrow">KEEP EVERYONE CONNECTED</p><h1>Communication</h1><p class="subheading">A shared space for conversations, updates, and ideas.</p></div></div>
+        <div class="tabs"><button class="tab active" data-tab="messages-tab">Messages</button><button class="tab" data-tab="announcements-tab">Announcements</button><button class="tab" data-tab="suggestions-tab">Suggestions</button></div>
+        <div class="tab-panel active" id="messages-tab"><div class="card chat-card"><div class="chat-header"><div class="user-avatar">MH</div><div><strong>Maple House Chat</strong><small>4 household members</small></div><span class="online-dot"></span></div><div class="chat-messages" id="chat-messages"><div class="chat-message"><span class="chat-avatar coral-avatar">A</span><div><small>Alex · 9:14 AM</small><p>Does anyone need anything from the store?</p></div></div><div class="chat-message own-message"><div><small>You · 9:18 AM</small><p>Could you grab paper towels? I added them to the list!</p></div><span class="chat-avatar purple-avatar">LH</span></div><div class="chat-message"><span class="chat-avatar green-avatar">J</span><div><small>Jordan · 9:22 AM</small><p>I'll take care of the trash bags.</p></div></div></div><form class="chat-compose" id="chat-form"><input id="chat-input" placeholder="Write a message..." autocomplete="off"><button class="primary-button" type="submit">Send ↗</button></form></div></div>
+        <div class="tab-panel" id="announcements-tab"><div class="section-toolbar"><div><h2>Household announcements</h2><p class="muted">Important updates everyone should see.</p></div><button class="primary-button" id="announcement-open">＋ New announcement</button></div><div id="announcement-list" class="announcement-list"></div></div>
+        <div class="tab-panel" id="suggestions-tab"><div class="card suggestion-card"><h2>Make a suggestion</h2><p class="muted">Share an idea to make your household work better. Suggestions are anonymous.</p><form id="suggestion-form"><textarea id="suggestion-input" placeholder="What's one thing we could improve?" required></textarea><button class="primary-button" type="submit">Submit suggestion</button></form><div id="suggestion-list"></div></div></div>
+      </section>
+
+      <section class="page" id="page-expenses">
+        <div class="page-heading"><div><p class="eyebrow">KEEP PURCHASES ORGANIZED</p><h1>Expenses</h1><p class="subheading">A simple record of shared household purchases.</p></div><button class="primary-button" id="add-expense-open">＋ Add purchase</button></div>
+        <div class="stats-row"><div class="card stat-card"><span class="muted">TOTAL PURCHASES</span><strong id="expense-total">$0.00</strong><small>Recorded by your household</small></div><div class="card stat-card"><span class="muted">THIS MONTH</span><strong id="expense-month">$0.00</strong><small>Household purchases</small></div><div class="card stat-card"><span class="muted">PURCHASE COUNT</span><strong id="expense-count">0</strong><small>Items recorded</small></div></div>
+        <div class="card table-card"><div class="section-toolbar"><div><h2>Purchase history</h2><p class="muted">See what was purchased and who paid.</p></div></div><div class="table-header expense-table-header"><span>ITEM</span><span>PURCHASED BY</span><span>DATE</span><span>AMOUNT</span></div><div id="expense-list"></div></div>
+      </section>
+
+      <section class="page" id="page-profile">
+        <div class="page-heading"><div><p class="eyebrow">YOUR SPACE</p><h1>Profile & Household</h1><p class="subheading">Manage your personal details and shared household information.</p></div></div>
+        <div class="profile-grid"><div class="card profile-card"><div class="profile-cover"></div><div class="profile-info"><span class="profile-large-avatar">LH</span><h2>Linda Huynh</h2><p class="muted">Household member</p><div class="profile-details"><div><small>EMAIL</small><strong>linda@example.com</strong></div><div><small>PHONE</small><strong>(555) 123-4567</strong></div></div><button class="secondary-button">Edit profile</button></div></div>
+          <div class="card household-card"><div class="section-toolbar"><div><h2>Maple House</h2><p class="muted">Your shared household</p></div><span class="pill green-pill">Active</span></div><div class="household-facts"><div><small>LOCATION</small><strong>Maple Hall · Room 302</strong></div><div><small>MEMBERS</small><strong>4 roommates</strong></div><div><small>MOVE-IN</small><strong>August 18, 2026</strong></div><div><small>MOVE-OUT</small><strong>May 15, 2027</strong></div></div><h3>Household members</h3><div class="member-list"><span class="member-avatar">LH</span><span>Linda Huynh</span><span class="member-role">You</span><span class="member-avatar coral-avatar">A</span><span>Alex Morgan</span><span class="member-avatar green-avatar">J</span><span>Jordan Lee</span><span class="member-avatar blue-avatar">S</span><span>Sam Rivera</span></div><div class="household-links"><button>Contacts</button><button>House rules</button><button>Documents</button><button>Invite roommates</button></div></div></div>
+      </section>
+
+      <section class="page" id="page-settings">
+        <div class="page-heading"><div><p class="eyebrow">MAKE IT YOURS</p><h1>Settings</h1><p class="subheading">Manage your account and notification preferences.</p></div></div>
+        <div class="card settings-card"><h2>Notifications</h2><p class="muted">Choose which household updates you'd like to receive.</p><label class="setting-row"><span><strong>Chore reminders</strong><small>Get reminders when a chore is due.</small></span><input type="checkbox" checked></label><label class="setting-row"><span><strong>Calendar events</strong><small>Be notified about upcoming household events.</small></span><input type="checkbox" checked></label><label class="setting-row"><span><strong>Announcements</strong><small>Know when a roommate posts an update.</small></span><input type="checkbox" checked></label><label class="setting-row"><span><strong>Shopping list updates</strong><small>Know when items are claimed or purchased.</small></span><input type="checkbox"></label></div>
+      </section>
+    </main>
+  </div>
+
+  <dialog id="item-dialog" class="modal"><form method="dialog" id="item-form"><div class="modal-heading"><div><p class="eyebrow">HOUSEHOLD NEEDS</p><h2>Add a shopping item</h2></div><button class="close-button" aria-label="Close">×</button></div><label>Item name<input id="item-name" required placeholder="e.g. Laundry detergent"></label><label>Next buyer<select id="item-buyer"><option>Anyone</option><option>Linda</option><option>Alex</option><option>Jordan</option><option>Sam</option></select></label><div class="modal-actions"><button type="button" class="secondary-button" data-close="item-dialog">Cancel</button><button class="primary-button" type="submit">Add item</button></div></form></dialog>
+
+  <dialog id="chore-dialog" class="modal"><form method="dialog" id="chore-form"><div class="modal-heading"><div><p class="eyebrow">CALENDAR & TASKS</p><h2>Add a chore</h2></div><button class="close-button" aria-label="Close">×</button></div><label>Chore name<input id="chore-name" required placeholder="e.g. Clean the bathroom"></label><label>Assign to<select id="chore-assignee"><option>Linda</option><option>Alex</option><option>Jordan</option><option>Sam</option></select></label><label>Due date<input id="chore-due" type="date" required></label><div class="modal-actions"><button type="button" class="secondary-button" data-close="chore-dialog">Cancel</button><button class="primary-button" type="submit">Add chore</button></div></form></dialog>
+
+  <dialog id="expense-dialog" class="modal"><form method="dialog" id="expense-form"><div class="modal-heading"><div><p class="eyebrow">PURCHASE HISTORY</p><h2>Record a purchase</h2></div><button class="close-button" aria-label="Close">×</button></div><label>Item<input id="expense-name" required placeholder="e.g. Dish soap"></label><label>Purchased by<select id="expense-buyer"><option>Linda</option><option>Alex</option><option>Jordan</option><option>Sam</option></select></label><label>Amount ($)<input id="expense-amount" type="number" min="0" step="0.01" required placeholder="0.00"></label><label>Date<input id="expense-date" type="date" required></label><div class="modal-actions"><button type="button" class="secondary-button" data-close="expense-dialog">Cancel</button><button class="primary-button" type="submit">Save purchase</button></div></form></dialog>
+
+  <dialog id="announcement-dialog" class="modal"><form method="dialog" id="announcement-form"><div class="modal-heading"><div><p class="eyebrow">COMMUNICATION</p><h2>New announcement</h2></div><button class="close-button" aria-label="Close">×</button></div><label>Title<input id="announcement-title" required placeholder="e.g. Water will be shut off"></label><label>Details<textarea id="announcement-body" required placeholder="Share the details with your household"></textarea></label><div class="modal-actions"><button type="button" class="secondary-button" data-close="announcement-dialog">Cancel</button><button class="primary-button" type="submit">Post announcement</button></div></form></dialog>
+
+  <div id="toast" class="toast" role="status"></div>
+  <script src="app.js"></script>
+</body>
+</html>
