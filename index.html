@@ -1,0 +1,69 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dorm Manager</title>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script defer src="app.js"></script>
+</head>
+<body>
+  <div id="authScreen" class="auth-screen">
+    <section class="auth-card">
+      <div class="brand-mark">DM</div>
+      <p class="eyebrow">ROOMMATE ORGANIZATION</p>
+      <h1>Welcome to Dorm Manager</h1>
+      <p class="muted">Keep your household organized in one place.</p>
+      <div class="tabs auth-tabs">
+        <button class="tab active" data-auth-tab="login">Log in</button>
+        <button class="tab" data-auth-tab="signup">Create account</button>
+      </div>
+      <form id="authForm" class="stack">
+        <label id="nameWrap" class="hidden">Full name<input id="authName" autocomplete="name"></label>
+        <label>Email<input id="authEmail" type="email" required autocomplete="email"></label>
+        <label>Password<input id="authPassword" type="password" required minlength="6" autocomplete="current-password"></label>
+        <button class="primary full" type="submit" id="authSubmit">Log in</button>
+      </form>
+      <p id="authMessage" class="message" aria-live="polite"></p>
+      <p class="tiny muted">Your household data is private to its members.</p>
+    </section>
+  </div>
+
+  <div id="app" class="app-shell hidden">
+    <aside class="sidebar" id="sidebar">
+      <a class="brand" href="#" aria-label="Dorm Manager home"><span class="brand-mark">DM</span><span><b>Dorm Manager</b><small>Shared living, simplified</small></span></a>
+      <div class="household-switch"><span class="eyebrow">YOUR HOUSEHOLD</span><strong id="sideHousehold">No household yet</strong><button class="text-button" data-page="household">Manage household →</button></div>
+      <nav class="nav">
+        <span class="nav-label">WORKSPACE</span>
+        <button class="nav-link active" data-page="dashboard"><span>⌂</span> Dashboard</button>
+        <button class="nav-link" data-page="calendar"><span>▦</span> Calendar & Tasks</button>
+        <button class="nav-link" data-page="shopping"><span>☷</span> Household Needs</button>
+        <button class="nav-link" data-page="communication"><span>✉</span> Communication</button>
+        <button class="nav-link" data-page="expenses"><span>$</span> Expenses</button>
+        <span class="nav-label">ACCOUNT</span>
+        <button class="nav-link" data-page="household"><span>⌂</span> Profile & Household</button>
+        <button class="nav-link" data-page="settings"><span>⚙</span> Settings</button>
+      </nav>
+      <div class="sidebar-bottom"><div class="avatar" id="userAvatar">U</div><div class="user-mini"><b id="userName">User</b><small id="userEmail"></small></div><button id="logoutBtn" class="icon-button" title="Log out">↗</button></div>
+    </aside>
+
+    <main class="main">
+      <header class="topbar"><button id="menuToggle" class="icon-button mobile-menu">☰</button><div><span class="eyebrow" id="pageEyebrow">YOUR SPACE</span><h2 id="pageTitle">Dashboard</h2></div><div class="top-actions"><span class="date-label" id="todayLabel"></span><button class="button" data-page="household">Household settings</button></div></header>
+      <div id="notice" class="notice hidden"></div>
+      <section id="pageContent" class="content"></section>
+      <footer> Dorm Manager <span>•</span> Simple tools for shared living</footer>
+    </main>
+  </div>
+
+  <dialog id="itemDialog" class="dialog">
+    <form id="itemForm" method="dialog">
+      <div class="dialog-head"><div><span class="eyebrow" id="dialogEyebrow">NEW ITEM</span><h3 id="dialogTitle">Add item</h3></div><button type="button" class="icon-button" id="dialogClose">×</button></div>
+      <div id="dialogFields" class="form-grid"></div>
+      <div class="dialog-actions"><button type="button" class="button" id="dialogCancel">Cancel</button><button class="primary" type="submit">Save</button></div>
+    </form>
+  </dialog>
+  <div id="toast" class="toast" role="status"></div>
+</body>
+</html>
